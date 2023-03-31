@@ -24,8 +24,6 @@ const repos: RepoInfo[] = [
 ]
 
 export const Repositories: React.FC = () => {
-  const [age, setAge] = React.useState('')
-
   return (
     <div className="grid grid-cols-1 divide-y">
       <h2 className="text-xl font-semibold mb-3">Choose a Repo</h2>

@@ -17,6 +17,7 @@
     "@nestjs/platform-express": "^9.0.0",
     "@nrwl/nest": "^15.8.9",
     "axios": "^1.0.0",
+    "date-fns": "^2.29.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "^6.10.0",

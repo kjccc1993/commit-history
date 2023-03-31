@@ -3,19 +3,18 @@ import { createBrowserRouter, Navigate } from 'react-router-dom'
 
 const CommitHistory = lazy(() => import('./pages/CommitHistory'))
 const Repositories = lazy(() => import('./pages/Repositories'))
-const Welcome = lazy(() => import('./pages/Welcome'))
 
 const routes = [
   {
     path: '/',
-    component: <Welcome title="ui" />,
+    component: <Navigate replace to="/repos" />,
   },
   {
     path: '/repos',
     component: <Repositories />,
   },
   {
-    path: '/repos/:owner/:name',
+    path: '/repos/:owner/:repo',
     component: <CommitHistory />,
   },
   {
