@@ -6,7 +6,7 @@ import Loading from '../components/Loading'
 import GenericError from '../components/GenericError'
 
 export const Repositories: React.FC = () => {
-  const [repos, setRepos] = React.useState<RepoInfoType[]>()
+  const [repos, setRepos] = React.useState<RepoInfoType[]>([])
   const [error, setError] = React.useState<boolean>(false)
 
   const getRepos = async () => {

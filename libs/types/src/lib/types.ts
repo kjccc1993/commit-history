@@ -9,3 +9,14 @@ export type RepoInfoType = {
   language: string
   ownerAvatarUrl: string
 }
+
+export type CommitInfoType = {
+  sha: string
+  author: {
+    username: string
+    avatarUrl: string
+  }
+  date: string
+  htmlUrl: string
+  message: string
+}

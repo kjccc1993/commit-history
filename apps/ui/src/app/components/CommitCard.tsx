@@ -19,16 +19,33 @@ export const CommitCard: React.FC<CommitCardProps> = ({
   sha,
   url,
 }) => {
-  const [title] = message.split('\n\n')
+  const [title, comments] = message.split('\n\n')
+
+  const Comments = () => {
+    return (
+      <>
+        {comments.split('\n').map((comment, i) => (
+          <p key={i} className="text-[11px] text-gray-600">
+            {comment}
+          </p>
+        ))}
+      </>
+    )
+  }
 
   return (
     <div className="flex items-center w-full">
       <div className="w-full py-2 px-3">
-        <h5 className="text-md font-medium t text-neutral-800">
+        <h5 className="text-md font-medium text-neutral-800">
           <Link className="text-blue-500" to={url} target="_blank">
             {title}
           </Link>
         </h5>
+
+        {/* Comments */}
+        {comments && <Comments />}
+
+        {/* Commit footer */}
         <div className="flex gap-2 items-center text-xs mt-2">
           <img
             src={authorAvatarUrl}
@@ -41,6 +58,7 @@ export const CommitCard: React.FC<CommitCardProps> = ({
           </p>
         </div>
       </div>
+
       <div className="m-4 p-2 border rounded bg-gray-100 text-xs">
         {sha.slice(0, 7)}
       </div>
