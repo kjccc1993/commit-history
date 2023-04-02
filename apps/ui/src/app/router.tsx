@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { createBrowserRouter, Navigate } from 'react-router-dom'
+import GenericError from './components/GenericError'
 
 const CommitHistory = lazy(() => import('./pages/CommitHistory'))
 const Repositories = lazy(() => import('./pages/Repositories'))
@@ -19,7 +20,9 @@ const routes = [
   },
   {
     path: '/404',
-    component: <div>not found</div>,
+    component: (
+      <GenericError message="We could not found the page you are looking for ☹" />
+    ),
   },
   {
     path: '*',

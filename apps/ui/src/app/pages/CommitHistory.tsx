@@ -15,6 +15,7 @@ export const CommitHistory: React.FC = () => {
 
   const getCommits = async () => {
     try {
+      setCommits([])
       const _commits = await HttpService.get(`/repos/${owner}/${repo}`)
       setCommits(_commits)
     } catch (error) {
@@ -46,6 +47,12 @@ export const CommitHistory: React.FC = () => {
       </div>
       <p className="text-[11px]">
         Displaying the last {commits.length} commits
+        <button
+          className="mx-2 p-1 border rounded bg-blue-500 text-white"
+          onClick={getCommits}
+        >
+          Refresh
+        </button>
       </p>
 
       {/* Commits list */}
