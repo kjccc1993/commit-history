@@ -12,7 +12,7 @@ export default function App() {
       <div>
         <Header />
         <div
-          className="mx-4 p-6 max-w-3xl md:mx-auto"
+          className="p-6 max-w-3xl md:mx-auto"
           style={{ paddingTop: headerHeight }}
         >
           <RouterProvider router={router} />

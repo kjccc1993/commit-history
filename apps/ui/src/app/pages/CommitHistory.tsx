@@ -1,9 +1,22 @@
 import * as React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import CommitCard from '../components/CommitCard'
+import { environment } from '../../environments/environment'
 
 export const CommitHistory: React.FC = () => {
+  //const [commits, setCommits] = React.useState<RepoInfoType[]>()
   const { owner, repo } = useParams()
+
+  const getCommits = async () => {
+    const response = await fetch(`${environment.apiUrl}/repos/${owner}/${repo}`)
+    const json = await response.json()
+    //setCommits(json)
+  }
+
+
+  // React.useEffect(() => {
+
+  // }, [])
   return (
     <div className="grid grid-cols-1">
       <div className="flex justify-between items-center">
