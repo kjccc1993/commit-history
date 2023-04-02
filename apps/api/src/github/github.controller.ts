@@ -1,11 +1,11 @@
-import { Controller, Get, HttpException, HttpStatus } from '@nestjs/common'
 import { GithubService } from './github.service'
+import { Controller, Get, HttpException, HttpStatus } from '@nestjs/common'
 
-@Controller('github')
+@Controller('repos')
 export class GithubController {
   constructor(private readonly githubService: GithubService) {}
 
-  @Get('repos')
+  @Get()
   getRepos() {
     try {
       return this.githubService.getRepos()

@@ -1,36 +1,25 @@
 import * as React from 'react'
 import RepoCard from '../components/RepoCard'
-
-interface RepoInfo {
-  name: string
-  owner: string
-  description: string
-  language: string
-}
-
-const repos: RepoInfo[] = [
-  {
-    name: 'commit-history',
-    owner: 'kjccc1993',
-    description: 'Task home fulltime force',
-    language: 'TypeScript',
-  },
-  {
-    name: 'EbookFoundation',
-    owner: 'free-programming-books',
-    description: 'free books ',
-    language: 'JavaScript',
-  },
-]
+import { RepoInfoType } from '@commit-history/types'
 
 export const Repositories: React.FC = () => {
+  const [repos, setRepos] = React.useState<RepoInfoType[]>()
+
+  const getRepos = async () => {
+    const response = await fetch('http://localhost:3333/api/repos')
+    const json = await response.json()
+    setRepos(json)
+  }
+
+  React.useEffect(() => {
+    getRepos()
+  }, [])
+
   return (
     <div className="grid grid-cols-1 divide-y">
       <h2 className="text-xl font-semibold mb-3">Choose a Repo</h2>
       <div>
-        {repos.map((repo) => (
-          <RepoCard {...repo} />
-        ))}
+        {!!repos?.length && repos.map((repo) => <RepoCard {...repo} />)}
       </div>
     </div>
   )

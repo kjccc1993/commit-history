@@ -1,14 +1,12 @@
 import { Module } from '@nestjs/common'
 
 import { AppController } from './app.controller'
-import { GithubController } from '../github/github.controller'
-import { GithubService } from '../github/github.service'
+import { GithubModule } from '../github/github.module'
 import { AppService } from './app.service'
-import { HttpModule } from '@nestjs/axios'
 
 @Module({
-  imports: [HttpModule],
-  controllers: [AppController, GithubController],
-  providers: [AppService, GithubService],
+  imports: [GithubModule],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
