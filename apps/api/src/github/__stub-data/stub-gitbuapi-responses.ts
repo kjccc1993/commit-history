@@ -1,4 +1,4 @@
-export const mockGitHubAPiResponses = {
+export const mockGitHubAPiReposResponses = {
   'kjccc1993/commit-history': {
     name: 'commit-history',
     owner: {
@@ -29,3 +29,49 @@ export const mockGitHubAPiResponses = {
     language: 'Python',
   },
 }
+
+export const mockGithubApiCommitsResponse = [
+  {
+    sha: 'sha1',
+    commit: {
+      author: {
+        date: '2023-03-28T19:41:54Z',
+      },
+      message: 'Wubba Lubba Dub Dub!',
+    },
+    author: {
+      login: 'rick-sanchez',
+      avatar_url: 'https://avatar.url/rick-sanchez.png',
+    },
+    html_url: 'https://commit.url',
+  },
+  {
+    sha: 'sha2',
+    commit: {
+      author: {
+        date: '2023-03-28T12:41:54Z',
+      },
+      message: 'I TURNED MYSELF INTO A PICKLE, MORTY! I AM PICKLE RI-I-I-ICK!',
+    },
+    author: {
+      login: 'rick-sanchez',
+      avatar_url: 'https://avatar.url/rick-sanchez.png',
+    },
+    html_url: 'https://commit.url',
+  },
+  {
+    sha: 'sha3',
+    commit: {
+      author: {
+        date: '2023-03-27T19:41:54Z',
+      },
+      message:
+        'LEMME CHECK MY LIST OF POWERS AND WEAKNESSES: ABILITY TO DO ANYTHING, BUT ONLY WHENEVER I WANT.',
+    },
+    author: {
+      login: 'rick-sanchez',
+      avatar_url: 'https://avatar.url/rick-sanchez.png',
+    },
+    html_url: 'https://commit.url',
+  },
+]

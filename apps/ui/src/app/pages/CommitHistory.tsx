@@ -13,7 +13,7 @@ export const CommitHistory: React.FC = () => {
 
   const { owner, repo } = useParams()
 
-  const getCommits = async () => {
+  const getCommits = React.useCallback(async () => {
     try {
       setCommits([])
       const _commits = await HttpService.get(`/repos/${owner}/${repo}`)
@@ -21,7 +21,7 @@ export const CommitHistory: React.FC = () => {
     } catch (error) {
       setError(true)
     }
-  }
+  }, [])
 
   React.useEffect(() => {
     getCommits()

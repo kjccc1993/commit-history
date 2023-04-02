@@ -1,4 +1,6 @@
-export const stubReposReponse = [
+import { RepoInfoType } from '@commit-history/types'
+
+export const stubReposReponse: RepoInfoType[] = [
   {
     name: 'commit-history',
     owner: 'kjccc1993',

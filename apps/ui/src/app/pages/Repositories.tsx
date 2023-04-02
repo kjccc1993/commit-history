@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react'
 import RepoCard from '../components/RepoCard'
 import { RepoInfoType } from '@commit-history/types'
@@ -9,14 +10,14 @@ export const Repositories: React.FC = () => {
   const [repos, setRepos] = React.useState<RepoInfoType[]>([])
   const [error, setError] = React.useState<boolean>(false)
 
-  const getRepos = async () => {
+  const getRepos = React.useCallback(async () => {
     try {
       const _repos = await HttpService.get('/repos')
       setRepos(_repos)
     } catch (error) {
       setError(true)
     }
-  }
+  }, [])
 
   React.useEffect(() => {
     getRepos()
