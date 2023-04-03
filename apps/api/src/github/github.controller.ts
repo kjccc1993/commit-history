@@ -12,15 +12,16 @@ export class GithubController {
   constructor(private readonly githubService: GithubService) {}
 
   @Get()
-  getRepos() {
+  async getRepos() {
     try {
-      return this.githubService.getRepos()
+      return await this.githubService.getRepos()
     } catch (error) {
       //TODO Capture errors with an external platform like Rollbar or Sentry
       //to make the tracking and fixing easier
       //for now a simple console log xD
       console.log(error)
 
+      //Generic response
       throw new HttpException('Server error', HttpStatus.INTERNAL_SERVER_ERROR)
     }
   }

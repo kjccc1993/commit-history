@@ -2,30 +2,13 @@
 import * as React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import CommitCard from '../components/CommitCard'
-import { HttpService } from '../services/http'
-import { CommitInfoType } from '@commit-history/types'
 import Loading from '../components/Loading'
 import GenericError from '../components/GenericError'
+import useGetCommits from '../hooks/useGetCommits'
 
 export const CommitHistory: React.FC = () => {
-  const [commits, setCommits] = React.useState<CommitInfoType[]>([])
-  const [error, setError] = React.useState<boolean>(false)
-
-  const { owner, repo } = useParams()
-
-  const getCommits = React.useCallback(async () => {
-    try {
-      setCommits([])
-      const _commits = await HttpService.get(`/repos/${owner}/${repo}`)
-      setCommits(_commits)
-    } catch (error) {
-      setError(true)
-    }
-  }, [])
-
-  React.useEffect(() => {
-    getCommits()
-  }, [])
+  const { owner = '', repo = '' } = useParams()
+  const { commits, error, getCommits } = useGetCommits({ owner, repo })
 
   if (error) {
     return <GenericError />

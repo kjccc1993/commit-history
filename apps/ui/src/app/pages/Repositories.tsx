@@ -1,27 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react'
 import RepoCard from '../components/RepoCard'
-import { RepoInfoType } from '@commit-history/types'
-import { HttpService } from '../services/http'
 import Loading from '../components/Loading'
 import GenericError from '../components/GenericError'
+import useGetRepos from '../hooks/useGetRepos'
 
 export const Repositories: React.FC = () => {
-  const [repos, setRepos] = React.useState<RepoInfoType[]>([])
-  const [error, setError] = React.useState<boolean>(false)
-
-  const getRepos = React.useCallback(async () => {
-    try {
-      const _repos = await HttpService.get('/repos')
-      setRepos(_repos)
-    } catch (error) {
-      setError(true)
-    }
-  }, [])
-
-  React.useEffect(() => {
-    getRepos()
-  }, [])
+  const { repos, error } = useGetRepos()
 
   if (error) {
     return <GenericError />
