@@ -15,10 +15,16 @@ export class GithubService {
   private githubRequest(url) {
     //We need to authenticate in order to avoid the
     //github api ratelimit (60 requests per hour)
-    return this.httpService.axiosRef.get(`${env.github.baseUrl}/${url}`, {
-      headers: {
+    let headers
+
+    if (env.github.apiKey) {
+      headers = {
         Authorization: `Bearer ${env.github.apiKey}`,
-      },
+      }
+    }
+
+    return this.httpService.axiosRef.get(`${env.github.baseUrl}/${url}`, {
+      headers,
     })
   }
 
