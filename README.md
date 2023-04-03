@@ -1,6 +1,6 @@
 # commits-history
 
-This is a Monorepo that has all the applications (API and UI) that form part of the commit-history system. This project was created as a take-home-test for Full Time Force position.
+This is a Monorepo that has all the applications (API and UI) that form part of the commit-history system. This project was created as a take-home-test for Full Time Force company.
 
 This project was generated using [Nx](https://nx.dev).
 
@@ -39,6 +39,8 @@ GITHUB_APIKEY=<GITHUB_API_TOKEN>
 ```
 
 To create your `GITHUB_API_TOKEN` follow the instructions from the [GitHub Docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic)
+
+Note: You can avoid this, but you will have a request rate limit, so after 60 requests to the Github API you'll have to wait 1 hour.
 
 ---
 
